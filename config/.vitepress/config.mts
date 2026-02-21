@@ -3,6 +3,17 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   lang: 'zh-CN',
   base: '/TierFlow-Doc/',
+  head: [
+    // 引入本地 MiSans 字体（支持 100-800 全字重）
+    ['link', { rel: 'stylesheet', href: '/TierFlow-Doc/fonts/misans.css' }],
+    // 覆盖 VitePress 字体变量
+    ['style', {}, `
+      :root {
+        --vp-font-family-base: 'MiSans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+        --vp-font-family-mono: 'MiSans', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+      }
+    `]
+  ],
 
   locales: {
     root: {
