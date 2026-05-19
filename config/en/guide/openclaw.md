@@ -62,7 +62,7 @@ Choose:
 ```text
 I understand this is personal-by-default and shared/multi-user use requires lock-down. Continue? -> Yes
 Onboarding mode -> QuickStart
-Config handling -> Use existing values
+Config handling -> Review and update
 ```
 
 If this is your first installation and there is no existing config, continue with the recommended defaults.

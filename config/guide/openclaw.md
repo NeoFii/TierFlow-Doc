@@ -62,7 +62,7 @@ openclaw onboard --install-daemon
 ```text
 I understand this is personal-by-default and shared/multi-user use requires lock-down. Continue? -> Yes
 Onboarding mode -> QuickStart
-Config handling -> Use existing values
+Config handling -> Review and update
 ```
 
 如果你是第一次安装，没有旧配置，就按默认推荐继续即可。
