@@ -4,6 +4,7 @@ export default defineConfig({
   lang: 'zh-CN',
   base: '/TierFlow-Doc/',
   head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/TierFlow-Doc/logo.svg' }],
     ['link', { rel: 'stylesheet', href: '/TierFlow-Doc/fonts/misans.css' }],
     ['style', {}, `
       :root {
@@ -118,6 +119,7 @@ export default defineConfig({
   },
 
   themeConfig: {
+    logo: '/logo.svg',
     socialLinks: [
       { icon: 'github', link: 'https://github.com/NeoFii/tierflow' }
     ],
