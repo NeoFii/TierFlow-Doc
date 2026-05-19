@@ -4,9 +4,7 @@ export default defineConfig({
   lang: 'zh-CN',
   base: '/TierFlow-Doc/',
   head: [
-    // 引入本地 MiSans 字体（支持 100-800 全字重）
     ['link', { rel: 'stylesheet', href: '/TierFlow-Doc/fonts/misans.css' }],
-    // 覆盖 VitePress 字体变量
     ['style', {}, `
       :root {
         --vp-font-family-base: 'MiSans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -34,6 +32,13 @@ export default defineConfig({
               items: [
                 { text: '什么是 TierFlow？', link: '/guide/introduction' },
                 { text: '快速开始', link: '/guide/getting-started' }
+              ]
+            },
+            {
+              text: '接入教程',
+              items: [
+                { text: 'OpenClaw 接入 TierFlow', link: '/guide/openclaw' },
+                { text: 'Claude Code 接入 TierFlow', link: '/guide/claude-code' }
               ]
             },
             {
@@ -78,6 +83,13 @@ export default defineConfig({
               items: [
                 { text: 'What is TierFlow?', link: '/en/guide/introduction' },
                 { text: 'Quick Start', link: '/en/guide/getting-started' }
+              ]
+            },
+            {
+              text: 'Integrations',
+              items: [
+                { text: 'OpenClaw TierFlow Setup', link: '/en/guide/openclaw' },
+                { text: 'Claude Code TierFlow Setup', link: '/en/guide/claude-code' }
               ]
             },
             {
