@@ -1,169 +1,137 @@
-# Getting Started
+# Quick Start
 
-Switch your existing OpenAI API calls to TierFlow intelligent routing in just 5 minutes.
+## Try It Online
 
-## Prerequisites
+Want to try TierFlow without installing anything? Send a request with cURL:
 
-- Experience with any LLM API
+```bash
+curl https://api.tierflow.dev/v1/chat/completions \
+  -H "Authorization: Bearer your-tierflow-key" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "auto", "messages": [{"role": "user", "content": "Hello"}]}'
+```
+
+## Integrate TierFlow
+
+### Prerequisites
+
+- Familiarity with the command line
 - Python 3.8+ or Node.js 18+
-- A TierFlow API Key ([sign up](https://tierflow.ai))
+- A TierFlow API Key
 
-## Step 1: Get Your API Key
+### Get Your API Key
 
-Log in to the [TierFlow Console](https://tierflow.ai/console) and create a new key on the "API Keys" page:
+Go to the [TierFlow Console](https://tierflow.dev/console) and create a new key on the "API Keys" page:
 
 ```
 TIERFLOW_API_KEY=tf-sk-xxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-## Step 2: Replace Base URL
+### Install SDK
 
-TierFlow is OpenAI API compatible. Just change `base_url` and `api_key` — no other code changes needed.
+::: code-group
 
-### Python (OpenAI SDK)
+```bash [Python]
+pip install openai
+```
 
-```python
+```bash [Node.js]
+npm install openai
+```
+
+:::
+
+TierFlow is compatible with the OpenAI SDK — no extra dependencies needed.
+
+### Replace Base URL
+
+Just change `base_url` and `api_key`. No other code changes required.
+
+::: code-group
+
+```python [Python]
 from openai import OpenAI
 
 client = OpenAI(
     api_key="tf-sk-xxxxxxxxxxxxxxxxxxxxxxxx",
-    base_url="https://api.tierflow.ai/v1"
+    base_url="https://api.tierflow.dev/v1"
 )
 
 response = client.chat.completions.create(
-    model="auto",  # TierFlow auto-selects the optimal model
-    messages=[
-        {"role": "user", "content": "Explain vector databases in one sentence"}
-    ]
+    model="auto",
+    messages=[{"role": "user", "content": "Explain vector databases in one sentence"}]
 )
 
 print(response.choices[0].message.content)
 ```
 
-### Node.js (OpenAI SDK)
-
-```javascript
+```javascript [Node.js]
 import OpenAI from "openai";
 
 const client = new OpenAI({
     apiKey: "tf-sk-xxxxxxxxxxxxxxxxxxxxxxxx",
-    baseURL: "https://api.tierflow.ai/v1"
+    baseURL: "https://api.tierflow.dev/v1"
 });
 
 const response = await client.chat.completions.create({
-    model: "auto",  // TierFlow auto-selects the optimal model
-    messages: [
-        { role: "user", content: "Explain vector databases in one sentence" }
-    ]
+    model: "auto",
+    messages: [{ role: "user", content: "Explain vector databases in one sentence" }]
 });
 
 console.log(response.choices[0].message.content);
 ```
 
-### cURL
-
-```bash
-curl https://api.tierflow.ai/v1/chat/completions \
+```bash [cURL]
+curl https://api.tierflow.dev/v1/chat/completions \
   -H "Authorization: Bearer tf-sk-xxxxxxxxxxxxxxxxxxxxxxxx" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "auto",
-    "messages": [
-      {"role": "user", "content": "Explain vector databases in one sentence"}
-    ]
+    "messages": [{"role": "user", "content": "Explain vector databases in one sentence"}]
   }'
 ```
 
-## Step 3: Understand Routing Modes
+:::
 
-TierFlow offers three routing modes via the `model` field:
+That's it. Your requests are now intelligently routed through TierFlow.
 
-| Mode | model Value | Description |
+## Routing Modes
+
+The `model` field supports multiple routing strategies. Start with `auto`:
+
+| Mode | model value | Description |
 |------|-------------|-------------|
-| **Auto Route** | `auto` | Automatically selects the optimal model based on task complexity (recommended) |
-| **Cost Priority** | `auto:cost` | Chooses the cheapest model that meets quality thresholds |
-| **Quality Priority** | `auto:quality` | Chooses the highest-scoring model on benchmarks |
-| **Direct Model** | `gpt-4o` / `claude-3.5-sonnet` etc. | Routes directly to the specified model, bypassing routing |
+| Auto Route | `auto` | Automatically selects the optimal model based on task complexity (recommended) |
+
+For more routing strategies (cost-first, quality-first, specific model, etc.), see [Routing Strategy](/en/guide/routing-strategy).
 
 ```python
-# Auto routing (recommended)
 response = client.chat.completions.create(
     model="auto",
     messages=[{"role": "user", "content": "Hello"}]
 )
-
-# Cost priority
-response = client.chat.completions.create(
-    model="auto:cost",
-    messages=[{"role": "user", "content": "Translate the following to French: ..."}]
-)
-
-# Quality priority
-response = client.chat.completions.create(
-    model="auto:quality",
-    messages=[{"role": "user", "content": "Analyze security vulnerabilities in this code and suggest fixes: ..."}]
-)
-
-# Direct model (bypass routing)
-response = client.chat.completions.create(
-    model="claude-3.5-sonnet",
-    messages=[{"role": "user", "content": "..."}]
-)
 ```
 
-## Step 4: Inspect Routing Results
+## View Routing Results
 
-Every API response includes routing metadata showing which model was used and the cost:
+Each response includes routing metadata showing which model was actually used:
 
 ```json
 {
-  "id": "chatcmpl-abc123",
-  "object": "chat.completion",
   "model": "gpt-4o-mini",
-  "choices": [...],
-  "usage": {
-    "prompt_tokens": 25,
-    "completion_tokens": 42,
-    "total_tokens": 67
-  },
   "tierflow": {
     "requested_model": "auto",
     "routed_model": "gpt-4o-mini",
     "route_reason": "simple_query",
     "estimated_cost": "$0.000042",
-    "saved_vs_flagship": "82%",
-    "latency_ms": 320
+    "saved_vs_flagship": "82%"
   }
 }
 ```
 
-Key fields:
+## Streaming
 
-| Field | Description |
-|-------|-------------|
-| `routed_model` | The model that actually handled the request |
-| `route_reason` | Why this model was chosen (e.g., `simple_query`, `code_generation`, `complex_reasoning`) |
-| `estimated_cost` | Estimated cost for this request |
-| `saved_vs_flagship` | Percentage saved compared to using a flagship model directly |
-
-## Step 5: View the Dashboard
-
-Log in to the [TierFlow Console](https://tierflow.ai/console) to view:
-
-- **Request Distribution**: Percentage breakdown of requests routed to each model
-- **Cost Trends**: Daily/weekly API spend over time
-- **Savings Report**: Cost comparison vs. using flagship models directly
-- **Latency Monitoring**: Real-time P90 latency charts per provider
-
-## FAQ
-
-### Does TierFlow affect response quality?
-
-No. The routing engine evaluates each request's complexity and only downgrades when a lighter model can handle it. You can set quality floor thresholds in the console.
-
-### Is streaming supported?
-
-Yes. Use the `stream=True` parameter just like with the OpenAI API:
+Works exactly like the OpenAI API — just use `stream=True`:
 
 ```python
 stream = client.chat.completions.create(
@@ -176,12 +144,24 @@ for chunk in stream:
     print(chunk.choices[0].delta.content or "", end="")
 ```
 
+## FAQ
+
+### Does it affect response quality?
+
+No. The routing engine evaluates each request's complexity and only downgrades when a lighter model can handle it. You can set quality thresholds in the console.
+
+### Which models are supported?
+
+OpenAI, Anthropic, Google, DeepSeek, Alibaba Cloud, and more. See [Model List](/en/guide/models) for the full list.
+
 ### How do I set budget limits?
 
-Configure daily/monthly budget caps in the console under "Budget Management". Once exceeded, the API returns `429` status codes.
+Set daily/monthly limits in the console under "Budget Management". The API returns `429` when limits are exceeded.
 
 ## Next Steps
 
-- Read [Routing Strategy](/en/guide/routing-strategy) to understand how the routing engine works
-- Browse [Model List](/en/guide/models) for all supported models and pricing
-- Check the [API Reference](/en/guide/api-reference) for full API documentation
+If you haven't read the [Introduction](/en/guide/introduction), we recommend starting there.
+
+- [Routing Strategy](/en/guide/routing-strategy) — Deep dive into how the routing engine works.
+- [Model List](/en/guide/models) — All supported models and pricing.
+- [API Reference](/en/guide/api-reference) — Complete API documentation.

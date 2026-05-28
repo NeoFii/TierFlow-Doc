@@ -1,91 +1,80 @@
-# What is TierFlow?
+# Introduction
 
-TierFlow is an **AI model intelligent routing platform**. We integrate APIs from leading LLM providers — OpenAI, Anthropic, Google, DeepSeek, Mistral — and serve developers through a unified interface.
+## What is TierFlow?
 
-Core value: **Reduce API costs by up to 60% without compromising output quality through intelligent routing.**
+TierFlow provides a unified API interface that automatically selects the optimal model based on request content, significantly reducing costs without compromising output quality.
+
+Here's a minimal integration example:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="your-tierflow-key",
+    base_url="https://api.tierflow.dev/v1"
+)
+
+response = client.chat.completions.create(
+    model="auto",
+    messages=[{"role": "user", "content": "Hello"}]
+)
+```
+
+The code above demonstrates two core features:
+
+- **Unified Interface**: Compatible with the OpenAI SDK — just replace `base_url` to get started.
+- **Intelligent Routing**: `model="auto"` lets TierFlow automatically match the optimal model for each request.
+
+> Already familiar with these concepts? Jump straight to [Quick Start](/en/guide/getting-started).
 
 ## The Problem
 
 Developers using LLM APIs face several common pain points:
 
-| Pain Point | Description |
-|------------|-------------|
-| **High Costs** | Flagship models (GPT-4o, Claude Opus) are expensive, but many requests don't require that tier |
-| **Choice Overload** | More models every month, each with different strengths — hard to pick the right one per task |
-| **Vendor Lock-in** | Every provider has different API formats, making migration costly |
-| **Availability Risk** | Single-provider outages or rate limits directly impact your business |
+- **High Costs**: Flagship models are expensive, but most requests don't need that level of capability.
+- **Choice Paralysis**: Too many models, each with different strengths — hard to pick the right one for each task.
+- **Vendor Lock-in**: Each provider has a different API format, making migration costly.
+- **Availability Risk**: A single provider outage means your service goes down.
 
-## How TierFlow Solves This
+TierFlow is designed to solve all of these at once.
 
-```
-User Request → TierFlow Engine → Analyze Task Complexity
-                                         ↓
-                                ┌───────────────────┐
-                                │  Routing Engine    │
-                                │                   │
-                                │  · Complexity     │
-                                │    Assessment     │
-                                │  · Model Matching │
-                                │  · Cost Optimize  │
-                                │  · Latency-Aware  │
-                                └───────┬───────────┘
-                                        ↓
-                    ┌─────────┬─────────┴────────┬──────────┐
-                    ▼         ▼                  ▼          ▼
-                 OpenAI   Anthropic          Google     DeepSeek
-                GPT-4o    Claude 3.5       Gemini 2.0   DeepSeek-V3
-                GPT-4o    Sonnet            Flash        Chat
-                mini      Haiku            Pro
-```
+## An Intelligent Routing Platform
 
-1. **Unified API**: OpenAI-compatible format — change one `base_url` and you're in
-2. **Smart Routing**: Automatically assesses request complexity and matches the best value model
-3. **Failover**: When a provider has issues, automatically switches to an equivalent backup
-4. **Cost Transparency**: Real-time dashboard showing model selection and cost breakdown per request
+"TierFlow is a routing engine and a model ecosystem."
 
-## Routing Decision Factors
+Depending on your needs, you can use TierFlow as:
 
-TierFlow makes routing decisions based on multiple dimensions:
+- A drop-in replacement for the OpenAI API — zero-effort cost reduction
+- A multi-model gateway — unified key and quota management across all providers
+- An intelligent dispatch layer — automatically assigns model tiers based on task complexity
+- A high-availability solution — automatic failover to backup providers
 
-### Performance Metrics
+Regardless of the use case, the core logic is the same: **analyze request → match model → route call**. That's why TierFlow is called an "intelligent routing platform" — it's a unified entry point that adapts to your needs.
 
-| Metric | Description | Update Frequency |
-|--------|-------------|-----------------|
-| **P90 Latency** | 90th percentile response time per model API | Real-time |
-| **Availability** | API success rate over the past 24 hours | Every minute |
-| **Throughput** | Current tokens/s processing speed | Real-time |
+## Routing Decisions
 
-### Cost Metrics
+TierFlow's routing engine makes decisions based on multiple dimensions:
 
-| Model | Input ($/1M tokens) | Output ($/1M tokens) | Tier |
-|-------|---------------------|----------------------|------|
-| GPT-4o | $2.50 | $10.00 | Flagship |
-| Claude 3.5 Sonnet | $3.00 | $15.00 | Flagship |
-| Gemini 2.0 Flash | $0.10 | $0.40 | Cost-effective |
-| GPT-4o mini | $0.15 | $0.60 | Cost-effective |
-| DeepSeek-V3 | $0.27 | $1.10 | Cost-effective |
-
-> Prices are example data for illustration. Refer to each provider's official pricing for actual rates.
-
-### Benchmark Scores
-
-| Model | MMLU | HumanEval | GSM8K | MT-Bench |
-|-------|------|-----------|-------|----------|
-| GPT-4o | 88.7 | 90.2 | 95.3 | 9.3 |
-| Claude 3.5 Sonnet | 88.3 | 92.0 | 96.4 | 9.1 |
-| Gemini 2.0 Flash | 85.1 | 82.3 | 90.1 | 8.4 |
-| GPT-4o mini | 82.0 | 87.2 | 93.2 | 8.7 |
-| DeepSeek-V3 | 87.1 | 89.4 | 94.8 | 9.0 |
-
-> Scores are example data for demonstrating routing decision dimensions.
+- **Task Complexity**: Analyzes request content to determine whether a flagship or lightweight model is sufficient.
+- **Latency Awareness**: Real-time monitoring of API response times across all models, avoiding high-latency nodes.
+- **Cost Optimization**: Prioritizes cost-effective models while meeting quality requirements.
+- **Failover**: Automatically switches to equivalent backup models when a provider has issues — zero downtime.
 
 ## Use Cases
 
-- **SaaS Products**: High volume, diverse request types — many simple queries don't need flagship models
-- **AI Agents / Workflows**: Multi-step task chains where different steps have different complexity levels
-- **Content Platforms**: Standard tasks (translation, summarization) use lightweight models; creative writing uses flagship
-- **Enterprise Tools**: Control API budgets while maintaining output quality for critical tasks
+TierFlow works for any scenario that involves LLM API calls:
 
-## Next Steps
+- **SaaS Products**: High request volume with diverse complexity — most queries don't need flagship models.
+- **AI Agents**: Multi-step task chains where different steps have different complexity levels.
+- **Content Generation**: Translations and summaries use lightweight models; creative writing uses flagship models.
+- **Enterprise Tools**: Control API budgets while ensuring critical tasks get top-quality output.
 
-Ready to get started? Head to [Getting Started](/en/guide/getting-started) to integrate in 5 minutes.
+## Still Have Questions?
+
+Check the [Quick Start](/en/guide/getting-started) for common questions.
+
+## Pick Your Learning Path
+
+- [Quick Start](/en/guide/getting-started) — Get integrated in 5 minutes.
+- [Routing Strategy](/en/guide/routing-strategy) — Deep dive into how the routing engine works.
+- [API Reference](/en/guide/api-reference) — Complete interface documentation.
