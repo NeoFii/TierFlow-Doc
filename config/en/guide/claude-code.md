@@ -1,4 +1,4 @@
-﻿# Claude Code TierFlow Setup
+# Claude Code TierFlow Setup
 
 This guide shows how to connect Claude Code to TierFlow.
 
@@ -6,10 +6,10 @@ Basic information:
 
 | Item | Value |
 |---|---|
-| Base URL | `http://47.99.200.103:8003/anthropic` |
+| Base URL | `https://api.tierflow.ai/anthropic` |
 | Authentication | Bearer Token |
 | Protocol | Anthropic API Compatible |
-| Model | `auto` |
+| Model | `claude code` |
 
 ## 1. Check That Claude Code Is Installed
 
@@ -95,12 +95,12 @@ Write:
 ```json
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "http://47.99.200.103:8003/anthropic",
+    "ANTHROPIC_BASE_URL": "https://api.tierflow.ai/anthropic",
     "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY_HERE",
-    "ANTHROPIC_MODEL": "auto",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "auto",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "auto",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "auto"
+    "ANTHROPIC_MODEL": "claude code",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude code",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude code",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude code"
   }
 }
 ```
@@ -190,7 +190,7 @@ In Claude Code, type:
 Confirm the model is:
 
 ```text
-auto
+claude code
 ```
 
 Then test with:
@@ -208,11 +208,11 @@ If you use the Claude Code VS Code extension, configure VS Code `settings.json` 
 ```json
 {
   "claudeCode.preferredLocation": "panel",
-  "claudeCode.selectedModel": "auto",
+  "claudeCode.selectedModel": "claude code",
   "claudeCode.environmentVariables": [
     {
       "name": "ANTHROPIC_BASE_URL",
-      "value": "http://47.99.200.103:8003/anthropic"
+      "value": "https://api.tierflow.ai/anthropic"
     },
     {
       "name": "ANTHROPIC_AUTH_TOKEN",
@@ -220,19 +220,19 @@ If you use the Claude Code VS Code extension, configure VS Code `settings.json` 
     },
     {
       "name": "ANTHROPIC_MODEL",
-      "value": "auto"
+      "value": "claude code"
     },
     {
       "name": "ANTHROPIC_DEFAULT_SONNET_MODEL",
-      "value": "auto"
+      "value": "claude code"
     },
     {
       "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
-      "value": "auto"
+      "value": "claude code"
     },
     {
       "name": "ANTHROPIC_DEFAULT_HAIKU_MODEL",
-      "value": "auto"
+      "value": "claude code"
     }
   ]
 }
@@ -305,12 +305,12 @@ New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude"
 @'
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "http://47.99.200.103:8003/anthropic",
+    "ANTHROPIC_BASE_URL": "https://api.tierflow.ai/anthropic",
     "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY_HERE",
-    "ANTHROPIC_MODEL": "auto",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "auto",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "auto",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "auto"
+    "ANTHROPIC_MODEL": "claude code",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude code",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude code",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude code"
   }
 }
 '@ | Set-Content -Encoding UTF8 "$env:USERPROFILE\.claude\settings.json"
@@ -332,12 +332,12 @@ mkdir -p ~/.claude
 cat > ~/.claude/settings.json <<'JSON'
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "http://47.99.200.103:8003/anthropic",
+    "ANTHROPIC_BASE_URL": "https://api.tierflow.ai/anthropic",
     "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY_HERE",
-    "ANTHROPIC_MODEL": "auto",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "auto",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "auto",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "auto"
+    "ANTHROPIC_MODEL": "claude code",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude code",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude code",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude code"
   }
 }
 JSON

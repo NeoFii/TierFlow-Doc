@@ -8,7 +8,7 @@
 
 | 项目 | 值 |
 |------|---|
-| Base URL | `https://api.mindrouter.ai/v1` |
+| Base URL | `https://api.tierflow.ai/v1` |
 | 认证方式 | Bearer Token |
 | 兼容协议 | OpenAI API |
 

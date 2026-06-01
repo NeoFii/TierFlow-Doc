@@ -2,7 +2,9 @@
 
 ## What is TierFlow?
 
-TierFlow provides a unified API interface that automatically selects the optimal model based on request content, significantly reducing costs without compromising output quality.
+TierFlow is an LLM token optimization and intelligent dispatch platform for agentic AI applications. It exposes a unified OpenAI-compatible API, connects multiple models and providers, and uses the in-house BrainNet-8B task perception engine to analyze intent, context, complexity, model capability, cost, and availability at each step.
+
+For developers, integration stays simple: keep your existing OpenAI SDK call pattern, replace `base_url`, and set the model to `auto`. TierFlow handles model selection, context refinement, retries, and cost control after that.
 
 Here's a minimal integration example:
 
@@ -11,7 +13,7 @@ from openai import OpenAI
 
 client = OpenAI(
     api_key="your-tierflow-key",
-    base_url="https://api.tierflow.dev/v1"
+    base_url="https://api.tierflow.ai/v1"
 )
 
 response = client.chat.completions.create(
@@ -22,52 +24,54 @@ response = client.chat.completions.create(
 
 The code above demonstrates two core features:
 
-- **Unified Interface**: Compatible with the OpenAI SDK — just replace `base_url` to get started.
-- **Intelligent Routing**: `model="auto"` lets TierFlow automatically match the optimal model for each request.
+- **Unified Interface**: Compatible with the OpenAI SDK. Existing code only needs a `base_url` change.
+- **Intelligent Routing**: `model="auto"` lets TierFlow match the model based on task stage, context, and cost constraints.
 
 > Already familiar with these concepts? Jump straight to [Quick Start](/en/guide/getting-started).
 
 ## The Problem
 
-Developers using LLM APIs face several common pain points:
+Production AI applications and agent workflows often run into the same bottlenecks:
 
-- **High Costs**: Flagship models are expensive, but most requests don't need that level of capability.
-- **Choice Paralysis**: Too many models, each with different strengths — hard to pick the right one for each task.
-- **Vendor Lock-in**: Each provider has a different API format, making migration costly.
-- **Availability Risk**: A single provider outage means your service goes down.
+- **Uncontrolled Token Cost**: Long task chains consume large contexts, and sending every step to flagship models quickly raises cost.
+- **Model Selection Overhead**: Reasoning, coding, retrieval, summarization, and tool use often require different model strengths.
+- **Context Redundancy**: Multi-step workflows accumulate repeated or low-value context, increasing latency and spend.
+- **Provider Availability Risk**: Rate limits, outages, or price changes from a single provider can disrupt production workloads.
 
-TierFlow is designed to solve all of these at once.
+TierFlow is designed to make every model call more suitable, more stable, and less expensive without sacrificing output quality.
 
-## An Intelligent Routing Platform
+## Intelligent Routing Platform
 
-"TierFlow is a routing engine and a model ecosystem."
+At the center of TierFlow is BrainNet-8B, a task perception model for step-level routing. Instead of relying on static rules, it evaluates what the current step needs, which context should be retained, which model is the best fit, and how to balance quality, latency, and cost.
 
-Depending on your needs, you can use TierFlow as:
+You can use TierFlow as:
 
-- A drop-in replacement for the OpenAI API — zero-effort cost reduction
-- A multi-model gateway — unified key and quota management across all providers
-- An intelligent dispatch layer — automatically assigns model tiers based on task complexity
-- A high-availability solution — automatic failover to backup providers
+- An OpenAI-compatible gateway for automatic routing with minimal code changes.
+- A multi-model gateway that unifies providers, models, keys, and quotas.
+- An agent dispatch layer that maps each step to the right model and execution path.
+- A high-availability inference entry point that switches paths during failures, rate limits, or cost changes.
 
-Regardless of the use case, the core logic is the same: **analyze request → match model → route call**. That's why TierFlow is called an "intelligent routing platform" — it's a unified entry point that adapts to your needs.
+The core flow is always the same: **perceive task -> refine context -> match model -> route execution**.
 
 ## Routing Decisions
 
-TierFlow's routing engine makes decisions based on multiple dimensions:
+BrainNet-8B converts each request into routing signals and combines them into a step-level decision:
 
-- **Task Complexity**: Analyzes request content to determine whether a flagship or lightweight model is sufficient.
-- **Latency Awareness**: Real-time monitoring of API response times across all models, avoiding high-latency nodes.
-- **Cost Optimization**: Prioritizes cost-effective models while meeting quality requirements.
-- **Failover**: Automatically switches to equivalent backup models when a provider has issues — zero downtime.
+- **Task Understanding**: Identifies user intent, constraints, tool requirements, and key inputs.
+- **Complexity Assessment**: Decides whether a high-capability model is needed or a lightweight model is enough.
+- **Context Compression**: Keeps the essential context and reduces unnecessary token usage.
+- **Model Capability Mapping**: Matches model strengths across coding, reasoning, summarization, and tool use.
+- **Cost Prediction**: Considers budget, latency, success rate, and model pricing in one decision.
+- **Decision Output**: Selects the model, provider, and execution path.
 
 ## Use Cases
 
-TierFlow works for any scenario that involves LLM API calls:
+TierFlow is a fit for applications that continuously call LLM APIs:
 
-- **SaaS Products**: High request volume with diverse complexity — most queries don't need flagship models.
-- **AI Agents**: Multi-step task chains where different steps have different complexity levels.
-- **Content Generation**: Translations and summaries use lightweight models; creative writing uses flagship models.
-- **Enterprise Tools**: Control API budgets while ensuring critical tasks get top-quality output.
+- **AI Agents**: Route different steps in a task chain to different model tiers.
+- **SaaS Products**: Reduce average cost across high-volume workloads with many simple requests.
+- **Developer Tools**: Dynamically assign models for code explanation, fixes, test generation, and documentation.
+- **Enterprise Tools**: Control API budgets while preserving higher-quality reasoning for critical tasks.
 
 ## Still Have Questions?
 
@@ -75,6 +79,6 @@ Check the [Quick Start](/en/guide/getting-started) for common questions.
 
 ## Pick Your Learning Path
 
-- [Quick Start](/en/guide/getting-started) — Get integrated in 5 minutes.
-- [Routing Strategy](/en/guide/routing-strategy) — Deep dive into how the routing engine works.
-- [API Reference](/en/guide/api-reference) — Complete interface documentation.
+- [Quick Start](/en/guide/getting-started): Get integrated in 5 minutes.
+- [Routing Strategy](/en/guide/routing-strategy): Learn how the routing engine works.
+- [API Reference](/en/guide/api-reference): Review the complete API documentation and parameters.

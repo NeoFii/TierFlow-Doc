@@ -1,4 +1,4 @@
-﻿# OpenClaw TierFlow Setup
+# OpenClaw TierFlow Setup
 
 This guide shows how to connect TierFlow to OpenClaw.
 
@@ -6,17 +6,17 @@ Basic information:
 
 | Item | Value |
 |---|---|
-| Base URL | `http://47.99.200.103:8003/v1` |
+| Base URL | `https://api.tierflow.ai/v1` |
 | Authentication | Bearer Token |
 | Protocol | OpenAI API Compatible |
-| Provider ID | `custom-47-99-200-103-8003` |
+| Provider ID | `tierflow` |
 | Model ID | `auto` |
-| OpenClaw Model | `custom-47-99-200-103-8003/auto` |
+| OpenClaw Model | `auto` |
 
 OpenClaw will send requests to:
 
 ```text
-POST http://47.99.200.103:8003/v1/chat/completions
+POST https://api.tierflow.ai/v1/chat/completions
 ```
 
 ## Method 1: Interactive Wizard
@@ -93,7 +93,7 @@ Fill in:
 
 ```text
 Model/auth provider -> Custom Provider
-API Base URL -> http://47.99.200.103:8003/v1
+API Base URL -> https://api.tierflow.ai/v1
 How do you want to provide this API key? -> Paste API key now
 API Key -> your API key
 Endpoint compatibility -> OpenAI-compatible
@@ -183,11 +183,11 @@ cat <<'JSON' | openclaw config patch --stdin
 {
   "models": {
     "providers": {
-      "custom-47-99-200-103-8003": {
+      "tierflow": {
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -215,11 +215,11 @@ $patch = @'
 {
   "models": {
     "providers": {
-      "custom-47-99-200-103-8003": {
+      "tierflow": {
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -310,14 +310,14 @@ Merge the following content into `openclaw.json`. If the file already contains `
   "models": {
     "mode": "merge",
     "providers": {
-      "custom-47-99-200-103-8003": {
-        "baseUrl": "http://47.99.200.103:8003/v1",
+      "tierflow": {
+        "baseUrl": "https://api.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -337,10 +337,10 @@ Merge the following content into `openclaw.json`. If the file already contains `
   "agents": {
     "defaults": {
       "model": {
-        "primary": "custom-47-99-200-103-8003/auto"
+        "primary": "auto"
       },
       "models": {
-        "custom-47-99-200-103-8003/auto": {}
+        "auto": {}
       }
     }
   }
@@ -383,14 +383,14 @@ cat <<'JSON' | openclaw config patch --stdin
   "models": {
     "mode": "merge",
     "providers": {
-      "custom-47-99-200-103-8003": {
-        "baseUrl": "http://47.99.200.103:8003/v1",
+      "tierflow": {
+        "baseUrl": "https://api.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -410,10 +410,10 @@ cat <<'JSON' | openclaw config patch --stdin
   "agents": {
     "defaults": {
       "model": {
-        "primary": "custom-47-99-200-103-8003/auto"
+        "primary": "auto"
       },
       "models": {
-        "custom-47-99-200-103-8003/auto": {}
+        "auto": {}
       }
     }
   }
@@ -433,14 +433,14 @@ $patch = @'
   "models": {
     "mode": "merge",
     "providers": {
-      "custom-47-99-200-103-8003": {
-        "baseUrl": "http://47.99.200.103:8003/v1",
+      "tierflow": {
+        "baseUrl": "https://api.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -460,10 +460,10 @@ $patch = @'
   "agents": {
     "defaults": {
       "model": {
-        "primary": "custom-47-99-200-103-8003/auto"
+        "primary": "auto"
       },
       "models": {
-        "custom-47-99-200-103-8003/auto": {}
+        "auto": {}
       }
     }
   }
@@ -484,14 +484,14 @@ $patch = @'
   "models": {
     "mode": "merge",
     "providers": {
-      "custom-47-99-200-103-8003": {
-        "baseUrl": "http://47.99.200.103:8003/v1",
+      "tierflow": {
+        "baseUrl": "https://api.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -511,10 +511,10 @@ $patch = @'
   "agents": {
     "defaults": {
       "model": {
-        "primary": "custom-47-99-200-103-8003/auto"
+        "primary": "auto"
       },
       "models": {
-        "custom-47-99-200-103-8003/auto": {}
+        "auto": {}
       }
     }
   }
@@ -550,7 +550,7 @@ openclaw models status --plain
 You should see:
 
 ```text
-custom-47-99-200-103-8003/auto
+auto
 ```
 
 Test the model:
@@ -558,19 +558,19 @@ Test the model:
 WSL Ubuntu / Linux / macOS:
 
 ```bash
-openclaw infer model run --local --model custom-47-99-200-103-8003/auto --prompt "Reply exactly OK."
+openclaw infer model run --local --model auto --prompt "Reply exactly OK."
 ```
 
 Windows PowerShell calling WSL:
 
 ```powershell
-wsl.exe -d Ubuntu bash -lc 'openclaw infer model run --local --model custom-47-99-200-103-8003/auto --prompt "Reply exactly OK."'
+wsl.exe -d Ubuntu bash -lc 'openclaw infer model run --local --model auto --prompt "Reply exactly OK."'
 ```
 
 Native Windows installation:
 
 ```powershell
-openclaw infer model run --local --model custom-47-99-200-103-8003/auto --prompt "Reply exactly OK."
+openclaw infer model run --local --model auto --prompt "Reply exactly OK."
 ```
 
 Open the Dashboard:
@@ -582,13 +582,13 @@ http://127.0.0.1:18789/
 In the model dropdown, choose:
 
 ```text
-Default (auto (Custom Provider))
+Default (auto)
 ```
 
 or:
 
 ```text
-auto (Custom Provider)
+auto
 ```
 
 ## Notes

@@ -5,7 +5,7 @@
 想在不安装任何东西的情况下快速体验 TierFlow？直接使用 cURL 发送一个请求：
 
 ```bash
-curl https://api.tierflow.dev/v1/chat/completions \
+curl https://api.tierflow.ai/v1/chat/completions \
   -H "Authorization: Bearer your-tierflow-key" \
   -H "Content-Type: application/json" \
   -d '{"model": "auto", "messages": [{"role": "user", "content": "你好"}]}'
@@ -54,7 +54,7 @@ from openai import OpenAI
 
 client = OpenAI(
     api_key="tf-sk-xxxxxxxxxxxxxxxxxxxxxxxx",
-    base_url="https://api.tierflow.dev/v1"
+    base_url="https://api.tierflow.ai/v1"
 )
 
 response = client.chat.completions.create(
@@ -70,7 +70,7 @@ import OpenAI from "openai";
 
 const client = new OpenAI({
     apiKey: "tf-sk-xxxxxxxxxxxxxxxxxxxxxxxx",
-    baseURL: "https://api.tierflow.dev/v1"
+    baseURL: "https://api.tierflow.ai/v1"
 });
 
 const response = await client.chat.completions.create({
@@ -82,7 +82,7 @@ console.log(response.choices[0].message.content);
 ```
 
 ```bash [cURL]
-curl https://api.tierflow.dev/v1/chat/completions \
+curl https://api.tierflow.ai/v1/chat/completions \
   -H "Authorization: Bearer tf-sk-xxxxxxxxxxxxxxxxxxxxxxxx" \
   -H "Content-Type: application/json" \
   -d '{

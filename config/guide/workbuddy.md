@@ -6,7 +6,7 @@
 
 | 项目 | 值 |
 |---|---|
-| Base URL | `http://47.99.200.103:8003/anthropic` |
+| Base URL | `https://api.tierflow.ai/anthropic` |
 | 认证方式 | Bearer Token |
 | 兼容协议 | Anthropic API |
 | Model | `auto` |

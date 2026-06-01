@@ -1,4 +1,4 @@
-﻿# OpenClaw 接入 TierFlow 教程
+# OpenClaw 接入 TierFlow 教程
 
 本文介绍如何把 TierFlow 接入 OpenClaw。
 
@@ -6,17 +6,17 @@
 
 | 项目 | 值 |
 |---|---|
-| Base URL | `http://47.99.200.103:8003/v1` |
+| Base URL | `https://api.tierflow.ai/v1` |
 | 认证方式 | Bearer Token |
 | 兼容协议 | OpenAI API |
-| Provider ID | `custom-47-99-200-103-8003` |
+| Provider ID | `tierflow` |
 | Model ID | `auto` |
-| OpenClaw Model | `custom-47-99-200-103-8003/auto` |
+| OpenClaw Model | `auto` |
 
 最终 OpenClaw 会请求：
 
 ```text
-POST http://47.99.200.103:8003/v1/chat/completions
+POST https://api.tierflow.ai/v1/chat/completions
 ```
 
 ## 方法一：交互式向导
@@ -93,7 +93,7 @@ Custom Provider (Any OpenAI or Anthropic compatible endpoint)
 
 ```text
 Model/auth provider -> Custom Provider
-API Base URL -> http://47.99.200.103:8003/v1
+API Base URL -> https://api.tierflow.ai/v1
 How do you want to provide this API key? -> Paste API key now
 API Key -> 你的 API Key
 Endpoint compatibility -> OpenAI-compatible
@@ -184,11 +184,11 @@ cat <<'JSON' | openclaw config patch --stdin
 {
   "models": {
     "providers": {
-      "custom-47-99-200-103-8003": {
+      "tierflow": {
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -216,11 +216,11 @@ $patch = @'
 {
   "models": {
     "providers": {
-      "custom-47-99-200-103-8003": {
+      "tierflow": {
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -309,14 +309,14 @@ openclaw config file
   "models": {
     "mode": "merge",
     "providers": {
-      "custom-47-99-200-103-8003": {
-        "baseUrl": "http://47.99.200.103:8003/v1",
+      "tierflow": {
+        "baseUrl": "https://api.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -336,10 +336,10 @@ openclaw config file
   "agents": {
     "defaults": {
       "model": {
-        "primary": "custom-47-99-200-103-8003/auto"
+        "primary": "auto"
       },
       "models": {
-        "custom-47-99-200-103-8003/auto": {}
+        "auto": {}
       }
     }
   }
@@ -382,14 +382,14 @@ cat <<'JSON' | openclaw config patch --stdin
   "models": {
     "mode": "merge",
     "providers": {
-      "custom-47-99-200-103-8003": {
-        "baseUrl": "http://47.99.200.103:8003/v1",
+      "tierflow": {
+        "baseUrl": "https://api.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -409,10 +409,10 @@ cat <<'JSON' | openclaw config patch --stdin
   "agents": {
     "defaults": {
       "model": {
-        "primary": "custom-47-99-200-103-8003/auto"
+        "primary": "auto"
       },
       "models": {
-        "custom-47-99-200-103-8003/auto": {}
+        "auto": {}
       }
     }
   }
@@ -432,14 +432,14 @@ $patch = @'
   "models": {
     "mode": "merge",
     "providers": {
-      "custom-47-99-200-103-8003": {
-        "baseUrl": "http://47.99.200.103:8003/v1",
+      "tierflow": {
+        "baseUrl": "https://api.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -459,10 +459,10 @@ $patch = @'
   "agents": {
     "defaults": {
       "model": {
-        "primary": "custom-47-99-200-103-8003/auto"
+        "primary": "auto"
       },
       "models": {
-        "custom-47-99-200-103-8003/auto": {}
+        "auto": {}
       }
     }
   }
@@ -483,14 +483,14 @@ $patch = @'
   "models": {
     "mode": "merge",
     "providers": {
-      "custom-47-99-200-103-8003": {
-        "baseUrl": "http://47.99.200.103:8003/v1",
+      "tierflow": {
+        "baseUrl": "https://api.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
           {
             "id": "auto",
-            "name": "auto (Custom Provider)",
+            "name": "auto",
             "reasoning": false,
             "input": ["text"],
             "cost": {
@@ -510,10 +510,10 @@ $patch = @'
   "agents": {
     "defaults": {
       "model": {
-        "primary": "custom-47-99-200-103-8003/auto"
+        "primary": "auto"
       },
       "models": {
-        "custom-47-99-200-103-8003/auto": {}
+        "auto": {}
       }
     }
   }
@@ -549,7 +549,7 @@ openclaw models status --plain
 应该看到：
 
 ```text
-custom-47-99-200-103-8003/auto
+auto
 ```
 
 测试调用：
@@ -557,19 +557,19 @@ custom-47-99-200-103-8003/auto
 WSL Ubuntu / Linux / macOS：
 
 ```bash
-openclaw infer model run --local --model custom-47-99-200-103-8003/auto --prompt "Reply exactly OK."
+openclaw infer model run --local --model auto --prompt "Reply exactly OK."
 ```
 
 Windows PowerShell 调 WSL：
 
 ```powershell
-wsl.exe -d Ubuntu bash -lc 'openclaw infer model run --local --model custom-47-99-200-103-8003/auto --prompt "Reply exactly OK."'
+wsl.exe -d Ubuntu bash -lc 'openclaw infer model run --local --model auto --prompt "Reply exactly OK."'
 ```
 
 Windows 原生：
 
 ```powershell
-openclaw infer model run --local --model custom-47-99-200-103-8003/auto --prompt "Reply exactly OK."
+openclaw infer model run --local --model auto --prompt "Reply exactly OK."
 ```
 
 打开 Dashboard：
@@ -581,13 +581,13 @@ http://127.0.0.1:18789/
 模型下拉框选择：
 
 ```text
-Default (auto (Custom Provider))
+Default (auto)
 ```
 
 或：
 
 ```text
-auto (Custom Provider)
+auto
 ```
 
 ## 说明

@@ -6,10 +6,10 @@ Basic info:
 
 | Item | Value |
 |---|---|
-| Base URL | `http://47.99.200.103:8003/v1` |
+| Base URL | `https://api.tierflow.ai/v1` |
 | Auth | Bearer Token |
 | Protocol | OpenAI API |
-| Model | `auto` |
+| Model | `codex` |
 
 ## 1. Confirm Codex is Installed
 
@@ -61,13 +61,13 @@ At `C:\Users\<your-username>\.codex`, delete the existing config.toml (if any) a
 
 ```bash
 model_provider = "tierflow"
-model = "auto"
+model = "codex"
 disable_response_storage = true
 preferred_auth_method = "apikey"
 
 [model_providers.tierflow]
 name = "tierflow"
-base_url = "https://api.freemodel.dev"
+base_url = "https://api.tierflow.ai/v1"
 wire_api = "responses"
 ```
 

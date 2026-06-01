@@ -6,10 +6,10 @@
 
 | 项目 | 值 |
 |---|---|
-| Base URL | `http://47.99.200.103:8003/v1` |
+| Base URL | `https://api.tierflow.ai/v1` |
 | 认证方式 | Bearer Token |
 | 兼容协议 | OpenAI API |
-| Model | `auto` |
+| Model | `codex` |
 
 ## 1. 确认 Codex 已安装
 
@@ -63,13 +63,13 @@ New-Item -ItemType Directory ~\.codex
 
 ```bash
 model_provider = "tierflow"
-model = "auto"
+model = "codex"
 disable_response_storage = true
 preferred_auth_method = "apikey"
 
 [model_providers.tierflow]
 name = "tierflow"
-base_url = "https://api.freemodel.dev"
+base_url = "https://api.tierflow.ai/v1"
 wire_api = "responses"
 ```
 
