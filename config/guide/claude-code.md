@@ -9,7 +9,7 @@
 | Base URL | `https://api.tierflow.ai/anthropic` |
 | 认证方式 | Bearer Token |
 | 兼容协议 | Anthropic API |
-| Model | `claude code` |
+| Model | `claude` |
 
 ## 1. 确认 Claude Code 已安装
 
@@ -97,10 +97,10 @@ settings.json
   "env": {
     "ANTHROPIC_BASE_URL": "https://api.tierflow.ai/anthropic",
     "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY_HERE",
-    "ANTHROPIC_MODEL": "claude code",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude code",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude code",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude code"
+    "ANTHROPIC_MODEL": "claude",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude"
   }
 }
 ```
@@ -190,7 +190,7 @@ Trust This Folder
 确认模型是：
 
 ```text
-claude code
+claude
 ```
 
 再测试一句：
@@ -208,7 +208,7 @@ Reply exactly OK.
 ```json
 {
   "claudeCode.preferredLocation": "panel",
-  "claudeCode.selectedModel": "claude code",
+  "claudeCode.selectedModel": "claude",
   "claudeCode.environmentVariables": [
     {
       "name": "ANTHROPIC_BASE_URL",
@@ -220,19 +220,19 @@ Reply exactly OK.
     },
     {
       "name": "ANTHROPIC_MODEL",
-      "value": "claude code"
+      "value": "claude"
     },
     {
       "name": "ANTHROPIC_DEFAULT_SONNET_MODEL",
-      "value": "claude code"
+      "value": "claude"
     },
     {
       "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
-      "value": "claude code"
+      "value": "claude"
     },
     {
       "name": "ANTHROPIC_DEFAULT_HAIKU_MODEL",
-      "value": "claude code"
+      "value": "claude"
     }
   ]
 }
@@ -307,10 +307,10 @@ New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude"
   "env": {
     "ANTHROPIC_BASE_URL": "https://api.tierflow.ai/anthropic",
     "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY_HERE",
-    "ANTHROPIC_MODEL": "claude code",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude code",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude code",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude code"
+    "ANTHROPIC_MODEL": "claude",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude"
   }
 }
 '@ | Set-Content -Encoding UTF8 "$env:USERPROFILE\.claude\settings.json"
@@ -334,10 +334,10 @@ cat > ~/.claude/settings.json <<'JSON'
   "env": {
     "ANTHROPIC_BASE_URL": "https://api.tierflow.ai/anthropic",
     "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY_HERE",
-    "ANTHROPIC_MODEL": "claude code",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude code",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude code",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude code"
+    "ANTHROPIC_MODEL": "claude",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude"
   }
 }
 JSON

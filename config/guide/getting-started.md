@@ -112,23 +112,6 @@ response = client.chat.completions.create(
 )
 ```
 
-## 查看路由结果
-
-每次响应中包含路由元信息，告诉你实际使用了哪个模型：
-
-```json
-{
-  "model": "gpt-4o-mini",
-  "tierflow": {
-    "requested_model": "auto",
-    "routed_model": "gpt-4o-mini",
-    "route_reason": "simple_query",
-    "estimated_cost": "$0.000042",
-    "saved_vs_flagship": "82%"
-  }
-}
-```
-
 ## 流式输出
 
 与 OpenAI API 用法完全一致，使用 `stream=True` 即可：

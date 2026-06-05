@@ -112,23 +112,6 @@ response = client.chat.completions.create(
 )
 ```
 
-## View Routing Results
-
-Each response includes routing metadata showing which model was actually used:
-
-```json
-{
-  "model": "gpt-4o-mini",
-  "tierflow": {
-    "requested_model": "auto",
-    "routed_model": "gpt-4o-mini",
-    "route_reason": "simple_query",
-    "estimated_cost": "$0.000042",
-    "saved_vs_flagship": "82%"
-  }
-}
-```
-
 ## Streaming
 
 Works exactly like the OpenAI API — just use `stream=True`:
