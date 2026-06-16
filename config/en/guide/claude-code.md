@@ -6,7 +6,7 @@ Basic information:
 
 | Item | Value |
 |---|---|
-| Base URL | `https://api.tierflow.ai/anthropic` |
+| Base URL | `https://cn.tierflow.ai` |
 | Authentication | Bearer Token |
 | Protocol | Anthropic API Compatible |
 | Model | `claude` |
@@ -95,7 +95,7 @@ Write:
 ```json
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "https://api.tierflow.ai/anthropic",
+    "ANTHROPIC_BASE_URL": "https://cn.tierflow.ai",
     "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY_HERE",
     "ANTHROPIC_MODEL": "claude",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude",
@@ -212,7 +212,7 @@ If you use the Claude Code VS Code extension, configure VS Code `settings.json` 
   "claudeCode.environmentVariables": [
     {
       "name": "ANTHROPIC_BASE_URL",
-      "value": "https://api.tierflow.ai/anthropic"
+      "value": "https://cn.tierflow.ai"
     },
     {
       "name": "ANTHROPIC_AUTH_TOKEN",
@@ -305,7 +305,7 @@ New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude"
 @'
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "https://api.tierflow.ai/anthropic",
+    "ANTHROPIC_BASE_URL": "https://cn.tierflow.ai",
     "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY_HERE",
     "ANTHROPIC_MODEL": "claude",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude",
@@ -332,7 +332,7 @@ mkdir -p ~/.claude
 cat > ~/.claude/settings.json <<'JSON'
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "https://api.tierflow.ai/anthropic",
+    "ANTHROPIC_BASE_URL": "https://cn.tierflow.ai",
     "ANTHROPIC_AUTH_TOKEN": "YOUR_API_KEY_HERE",
     "ANTHROPIC_MODEL": "claude",
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude",

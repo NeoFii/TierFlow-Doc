@@ -6,7 +6,7 @@
 
 | 项目 | 值 |
 |---|---|
-| Base URL | `https://api.tierflow.ai/anthropic` |
+| Base URL | `https://cn.tierflow.ai` |
 | 认证方式 | Bearer Token |
 | 兼容协议 | Anthropic API |
 | Model | `auto` |

@@ -13,7 +13,7 @@ from openai import OpenAI
 
 client = OpenAI(
     api_key="your-tierflow-key",
-    base_url="https://api.tierflow.ai/v1"
+    base_url="https://cn.tierflow.ai/v1"
 )
 
 response = client.chat.completions.create(

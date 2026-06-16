@@ -6,7 +6,7 @@
 
 | 项目 | 值 |
 |---|---|
-| Base URL | `https://api.tierflow.ai/v1` |
+| Base URL | `https://cn.tierflow.ai/v1` |
 | 认证方式 | Bearer Token |
 | 兼容协议 | OpenAI API |
 | Model | `codex` |
@@ -69,7 +69,7 @@ preferred_auth_method = "apikey"
 
 [model_providers.tierflow]
 name = "tierflow"
-base_url = "https://api.tierflow.ai/v1"
+base_url = "https://cn.tierflow.ai/v1"
 wire_api = "responses"
 ```
 

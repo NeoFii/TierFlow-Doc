@@ -6,7 +6,7 @@ Basic information:
 
 | Item | Value |
 |---|---|
-| Base URL | `https://api.tierflow.ai/v1` |
+| Base URL | `https://cn.tierflow.ai/v1` |
 | Authentication | Bearer Token |
 | Protocol | OpenAI API Compatible |
 | Provider ID | `tierflow` |
@@ -16,7 +16,7 @@ Basic information:
 OpenClaw will send requests to:
 
 ```text
-POST https://api.tierflow.ai/v1/chat/completions
+POST https://cn.tierflow.ai/v1/chat/completions
 ```
 
 ## Method 1: Interactive Wizard
@@ -93,7 +93,7 @@ Fill in:
 
 ```text
 Model/auth provider -> Custom Provider
-API Base URL -> https://api.tierflow.ai/v1
+API Base URL -> https://cn.tierflow.ai/v1
 How do you want to provide this API key? -> Paste API key now
 API Key -> your API key
 Endpoint compatibility -> OpenAI-compatible
@@ -311,7 +311,7 @@ Merge the following content into `openclaw.json`. If the file already contains `
     "mode": "merge",
     "providers": {
       "tierflow": {
-        "baseUrl": "https://api.tierflow.ai/v1",
+        "baseUrl": "https://cn.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
@@ -384,7 +384,7 @@ cat <<'JSON' | openclaw config patch --stdin
     "mode": "merge",
     "providers": {
       "tierflow": {
-        "baseUrl": "https://api.tierflow.ai/v1",
+        "baseUrl": "https://cn.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
@@ -434,7 +434,7 @@ $patch = @'
     "mode": "merge",
     "providers": {
       "tierflow": {
-        "baseUrl": "https://api.tierflow.ai/v1",
+        "baseUrl": "https://cn.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
@@ -485,7 +485,7 @@ $patch = @'
     "mode": "merge",
     "providers": {
       "tierflow": {
-        "baseUrl": "https://api.tierflow.ai/v1",
+        "baseUrl": "https://cn.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [

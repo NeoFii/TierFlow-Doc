@@ -8,7 +8,7 @@ This page is under construction. Stay tuned!
 
 | Item | Value |
 |------|-------|
-| Base URL | `https://api.tierflow.ai/v1` |
+| Base URL | `https://cn.tierflow.ai/v1` |
 | Authentication | Bearer Token |
 | Protocol | OpenAI API Compatible |
 

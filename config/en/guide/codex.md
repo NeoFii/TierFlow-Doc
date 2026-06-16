@@ -6,7 +6,7 @@ Basic info:
 
 | Item | Value |
 |---|---|
-| Base URL | `https://api.tierflow.ai/v1` |
+| Base URL | `https://cn.tierflow.ai/v1` |
 | Auth | Bearer Token |
 | Protocol | OpenAI API |
 | Model | `codex` |
@@ -67,7 +67,7 @@ preferred_auth_method = "apikey"
 
 [model_providers.tierflow]
 name = "tierflow"
-base_url = "https://api.tierflow.ai/v1"
+base_url = "https://cn.tierflow.ai/v1"
 wire_api = "responses"
 ```
 

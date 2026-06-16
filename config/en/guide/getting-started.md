@@ -5,7 +5,7 @@
 Want to try TierFlow without installing anything? Send a request with cURL:
 
 ```bash
-curl https://api.tierflow.ai/v1/chat/completions \
+curl https://cn.tierflow.ai/v1/chat/completions \
   -H "Authorization: Bearer your-tierflow-key" \
   -H "Content-Type: application/json" \
   -d '{"model": "auto", "messages": [{"role": "user", "content": "Hello"}]}'
@@ -54,7 +54,7 @@ from openai import OpenAI
 
 client = OpenAI(
     api_key="tf-sk-xxxxxxxxxxxxxxxxxxxxxxxx",
-    base_url="https://api.tierflow.ai/v1"
+    base_url="https://cn.tierflow.ai/v1"
 )
 
 response = client.chat.completions.create(
@@ -70,7 +70,7 @@ import OpenAI from "openai";
 
 const client = new OpenAI({
     apiKey: "tf-sk-xxxxxxxxxxxxxxxxxxxxxxxx",
-    baseURL: "https://api.tierflow.ai/v1"
+    baseURL: "https://cn.tierflow.ai/v1"
 });
 
 const response = await client.chat.completions.create({
@@ -82,7 +82,7 @@ console.log(response.choices[0].message.content);
 ```
 
 ```bash [cURL]
-curl https://api.tierflow.ai/v1/chat/completions \
+curl https://cn.tierflow.ai/v1/chat/completions \
   -H "Authorization: Bearer tf-sk-xxxxxxxxxxxxxxxxxxxxxxxx" \
   -H "Content-Type: application/json" \
   -d '{

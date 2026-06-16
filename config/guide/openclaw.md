@@ -6,7 +6,7 @@
 
 | 项目 | 值 |
 |---|---|
-| Base URL | `https://api.tierflow.ai/v1` |
+| Base URL | `https://cn.tierflow.ai/v1` |
 | 认证方式 | Bearer Token |
 | 兼容协议 | OpenAI API |
 | Provider ID | `tierflow` |
@@ -16,7 +16,7 @@
 最终 OpenClaw 会请求：
 
 ```text
-POST https://api.tierflow.ai/v1/chat/completions
+POST https://cn.tierflow.ai/v1/chat/completions
 ```
 
 ## 方法一：交互式向导
@@ -93,7 +93,7 @@ Custom Provider (Any OpenAI or Anthropic compatible endpoint)
 
 ```text
 Model/auth provider -> Custom Provider
-API Base URL -> https://api.tierflow.ai/v1
+API Base URL -> https://cn.tierflow.ai/v1
 How do you want to provide this API key? -> Paste API key now
 API Key -> 你的 API Key
 Endpoint compatibility -> OpenAI-compatible
@@ -310,7 +310,7 @@ openclaw config file
     "mode": "merge",
     "providers": {
       "tierflow": {
-        "baseUrl": "https://api.tierflow.ai/v1",
+        "baseUrl": "https://cn.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
@@ -383,7 +383,7 @@ cat <<'JSON' | openclaw config patch --stdin
     "mode": "merge",
     "providers": {
       "tierflow": {
-        "baseUrl": "https://api.tierflow.ai/v1",
+        "baseUrl": "https://cn.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
@@ -433,7 +433,7 @@ $patch = @'
     "mode": "merge",
     "providers": {
       "tierflow": {
-        "baseUrl": "https://api.tierflow.ai/v1",
+        "baseUrl": "https://cn.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [
@@ -484,7 +484,7 @@ $patch = @'
     "mode": "merge",
     "providers": {
       "tierflow": {
-        "baseUrl": "https://api.tierflow.ai/v1",
+        "baseUrl": "https://cn.tierflow.ai/v1",
         "apiKey": "YOUR_API_KEY_HERE",
         "api": "openai-completions",
         "models": [

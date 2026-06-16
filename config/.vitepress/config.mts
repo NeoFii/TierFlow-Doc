@@ -41,7 +41,8 @@ export default defineConfig({
                 { text: 'OpenClaw 接入 TierFlow', link: '/guide/openclaw' },
                 { text: 'Claude Code 接入 TierFlow', link: '/guide/claude-code' },
                 { text: 'WorkBuddy 接入 TierFlow', link: '/guide/workbuddy' },
-                { text: 'Codex 接入 TierFlow', link: '/guide/codex' }
+                { text: 'Codex 接入 TierFlow', link: '/guide/codex' },
+                { text: 'CC Switch 接入 TierFlow', link: '/guide/ccswitch' }
               ]
             },
             {
@@ -94,7 +95,8 @@ export default defineConfig({
                 { text: 'OpenClaw TierFlow Setup', link: '/en/guide/openclaw' },
                 { text: 'Claude Code TierFlow Setup', link: '/en/guide/claude-code' },
                 { text: 'WorkBuddy TierFlow Setup', link: '/en/guide/workbuddy' },
-                { text: 'Codex TierFlow Setup', link: '/en/guide/codex' }
+                { text: 'Codex TierFlow Setup', link: '/en/guide/codex' },
+                { text: 'CC Switch TierFlow Setup', link: '/en/guide/ccswitch' }
               ]
             },
             {

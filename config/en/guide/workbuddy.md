@@ -6,7 +6,7 @@ Basic info:
 
 | Item | Value |
 |---|---|
-| Base URL | `https://api.tierflow.ai/anthropic` |
+| Base URL | `https://cn.tierflow.ai` |
 | Auth | Bearer Token |
 | Protocol | Anthropic API |
 | Model | `auto` |
