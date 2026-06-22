@@ -133,7 +133,7 @@ If you use the Claude Code desktop app, install a recent CC Switch version. Olde
 
 | Item | Value |
 |---|---|
-| Provider name | `eucal` |
+| Provider name | `tierflow` |
 | Website | Optional |
 | API Key | Your TierFlow API key |
 | Request URL | `https://cn.tierflow.ai` |
@@ -155,7 +155,7 @@ Use your real TierFlow API key in the API Key field.
 
 ![CC Switch Claude model mapping](../../guide/assets/ccswitch-claude-model-mapping.png)
 
-Save the provider, return to the Claude provider list, and enable `eucal`. CC Switch will route Claude requests through local routing and then forward them to TierFlow.
+Save the provider, return to the Claude provider list, and enable `tierflow`. CC Switch will route Claude requests through local routing and then forward them to TierFlow.
 
 ## 4. Configure Codex
 
@@ -273,7 +273,7 @@ Restart the terminal, VS Code, Cursor, or Windows Terminal. Codex and Claude Cod
 
 ### Claude Code still uses official Claude
 
-Check that the top CC Switch local routing switch is enabled, and confirm the active Claude provider is `eucal`. If you use the Claude Code desktop app, also confirm CC Switch is a recent version and that the Claude app card shows `Routing required`.
+Check that the top CC Switch local routing switch is enabled, and confirm the active Claude provider is `tierflow`. If you use the Claude Code desktop app, also confirm CC Switch is a recent version and that the Claude app card shows `Routing required`.
 
 If old `ANTHROPIC_BASE_URL` or `ANTHROPIC_AUTH_TOKEN` values were set as system environment variables, remove them and reopen the terminal or Claude Code desktop app.
 

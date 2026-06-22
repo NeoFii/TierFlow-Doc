@@ -133,7 +133,7 @@ chmod +x CC-Switch-v{版本号}-Linux-*.AppImage
 
 | 项目 | 填写内容 |
 |---|---|
-| 供应商名称 | `eucal` |
+| 供应商名称 | `tierflow` |
 | 官网链接 | 可留空 |
 | API Key | 你的 TierFlow API Key |
 | 请求地址 | `https://cn.tierflow.ai` |
@@ -155,7 +155,7 @@ API Key 请填写真实的 TierFlow API Key。
 
 ![CC Switch Claude 模型映射](./assets/ccswitch-claude-model-mapping.png)
 
-保存后回到 Claude 供应商列表，启用 `eucal`。启用后，CC Switch 会把 Claude 请求转发到本地路由，再由本地路由转发到 TierFlow。
+保存后回到 Claude 供应商列表，启用 `tierflow`。启用后，CC Switch 会把 Claude 请求转发到本地路由，再由本地路由转发到 TierFlow。
 
 ## 4. 配置 Codex
 
@@ -273,7 +273,7 @@ Reply exactly OK.
 
 ### Claude Code 仍然走官方 Claude
 
-检查 CC Switch 顶部本地路由开关是否已打开，并确认 Claude 供应商列表中启用的是 `eucal`。如果使用 Claude Code 桌面版，还需要确认 CC Switch 是较新版本，且 Claude 应用卡片显示「需要路由」。
+检查 CC Switch 顶部本地路由开关是否已打开，并确认 Claude 供应商列表中启用的是 `tierflow`。如果使用 Claude Code 桌面版，还需要确认 CC Switch 是较新版本，且 Claude 应用卡片显示「需要路由」。
 
 如果系统环境变量里写过旧的 `ANTHROPIC_BASE_URL` 或 `ANTHROPIC_AUTH_TOKEN`，建议删除旧值后重新打开终端或 Claude Code 桌面版。
 

@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: TierFlow
-  text: AI Model Intelligent Routing Platform
-  tagline: Unified API access, smart model selection — same quality, 60% lower cost
+  text: Token Optimization Engine for the Agentic Era
+  tagline: TierFlow uses the in-house 8B task-aware decision model BrainNet-8B to understand each step, assess complexity, compress context, forecast cost, and dynamically choose the best model and execution path for multi-step agent workloads.
   image:
     src: /logo.svg
     alt: TierFlow
@@ -18,12 +18,12 @@ hero:
 
 features:
   - icon: 🧠
-    title: Intelligent Routing
-    details: Automatically selects the optimal model based on latency, cost, and quality metrics — no manual switching required.
+    title: BrainNet-8B Decision Engine
+    details: Evaluates task complexity, context, capability tags, and cost at each step to choose the model and execution path.
+  - icon: ✅
+    title: 91.6% Task Success Rate
+    details: Optimized for multi-step agent workloads so cost drops while success rate stays stable or improves.
   - icon: 💰
-    title: Cut Costs by 60%
-    details: Simple tasks use efficient models, complex reasoning uses flagship models — every dollar well spent.
-  - icon: 🔗
-    title: Zero-Effort Integration
-    details: OpenAI-compatible API format. Just replace base_url — no code changes needed.
+    title: 80%+ Average Cost Reduction
+    details: Context compression, cost forecasting, and candidate model scoring reduce average task cost versus a single flagship model.
 ---

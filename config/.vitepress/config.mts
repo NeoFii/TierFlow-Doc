@@ -19,7 +19,7 @@ export default defineConfig({
       label: '简体中文',
       lang: 'zh-CN',
       title: 'TierFlow',
-      description: 'AI 模型智能路由平台，统一 API 接入，成本直降 60%',
+      description: '智能体时代的 Token 优化引擎，自研 BrainNet-8B 动态决策最优模型与执行路径',
       themeConfig: {
         nav: [
           { text: '首页', link: '/' },
@@ -73,7 +73,7 @@ export default defineConfig({
       lang: 'en-US',
       link: '/en/',
       title: 'TierFlow',
-      description: 'AI Model Intelligent Routing Platform — Unified API, 60% Cost Reduction',
+      description: 'Token optimization engine for the agentic era, powered by BrainNet-8B step-level decisions',
       themeConfig: {
         nav: [
           { text: 'Home', link: '/en/' },
